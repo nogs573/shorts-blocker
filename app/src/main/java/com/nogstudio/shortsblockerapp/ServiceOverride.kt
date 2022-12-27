@@ -23,8 +23,8 @@ class ServiceOverride: Service() {
         // Get an instance of the WindowManager class.
         windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
-        val button = Button(this)
-        button.setText("Overlayed button")
+        button = Button(this)
+        button.setText("NO")
         button.setBackgroundColor(Color.RED)
 
         // Set the button's size, position, and appearance using layout parameters.
@@ -35,9 +35,9 @@ class ServiceOverride: Service() {
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, //flag
             PixelFormat.TRANSLUCENT //format
         )
-        layoutParams.gravity = Gravity.TOP or Gravity.LEFT //position
-        layoutParams.x = 0
-        layoutParams.y = 100
+        layoutParams.gravity = Gravity.BOTTOM or Gravity.LEFT
+        layoutParams.x = 150
+        layoutParams.y = 0
 
         // Add the button to the window.
         windowManager.addView(button, layoutParams)
