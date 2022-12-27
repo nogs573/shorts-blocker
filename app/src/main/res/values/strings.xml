@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">shortsblockerapp</string>\
+    <string name="switch_text">Toggle Shorts Blocker</string>
+    <string name="welcome_text">Thank you for using the app!</string>
+</resources>
