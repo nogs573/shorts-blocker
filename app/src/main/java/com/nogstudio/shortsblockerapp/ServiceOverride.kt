@@ -1,5 +1,6 @@
 package com.nogstudio.shortsblockerapp
 
+import android.app.ActivityManager
 import android.app.Service
 import android.content.Context
 import android.content.Intent
@@ -46,10 +47,20 @@ class ServiceOverride: Service() {
         // Set an OnClickListener for the button.
         button.setOnClickListener {
             // Perform the desired action when the button is clicked.
+            checkTopTask()
             println("Button was pressed")
         }
 
     }
+
+    private fun checkTopTask(){
+        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val tasks = activityManager.getRunningTasks(1)
+        val topActivities = tasks[0]
+
+        println("This app is running: $topActivities")
+    }
+
     override fun onBind(intent: Intent): IBinder? {
         // Return the communication channel to the service.
         return null

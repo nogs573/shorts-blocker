@@ -1,19 +1,14 @@
 package com.nogstudio.shortsblockerapp
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.content.ContextCompat
-import androidx.core.app.ActivityCompat
 
-private const val PERMISSION_REQUEST_CODE = 1
-private const val OVERLAY_PERMISSION_REQUEST_CODE = 2
+private const val OVERLAY_PERMISSION_REQUEST_CODE = 1
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,46 +42,9 @@ class MainActivity : AppCompatActivity() {
                 Uri.parse("package:$packageName"))
             startActivityForResult(intent, OVERLAY_PERMISSION_REQUEST_CODE)
         } else {
-            // The app has the permission, so you can proceed with your desired action
+            // The app has the permission, so you can proceed with trying overlay
             permissionGranted = 1
         }
         return permissionGranted
     }
-
-//    private fun getOverlayPerm(): Int
-//    {
-//        var permissionGranted = 0
-//        //check if permission was previously granted
-//        if (ContextCompat.checkSelfPermission(this,
-//                Manifest.permission.SYSTEM_ALERT_WINDOW)
-//            != PackageManager.PERMISSION_GRANTED)
-//        {
-//            // Permission was not granted
-//            // Check if the user has previously denied the permission
-//            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-//                    Manifest.permission.SYSTEM_ALERT_WINDOW))
-//            {
-//                // The user has previously denied the permission, so do nothing
-//                //**consider sending a message to user here
-//            }
-//            else
-//            {
-//                println("GOT HERE")
-//                // The user has not previously denied the permission, so request it
-//                ActivityCompat.requestPermissions(this,
-//                    arrayOf(Manifest.permission.SYSTEM_ALERT_WINDOW),
-//                    PERMISSION_REQUEST_CODE)
-//                //check the result
-//                if (ContextCompat.checkSelfPermission(this,
-//                        Manifest.permission.SYSTEM_ALERT_WINDOW)
-//                    == PackageManager.PERMISSION_GRANTED)
-//                {
-//                    permissionGranted = 1
-//                }
-//            }
-//        }
-//        return permissionGranted
-//    }
-
-
 }
